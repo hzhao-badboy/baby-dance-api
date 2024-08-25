@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/notion', async (req, res) => {
   try {
-    const response = addToNotion(req)
+    const response = addToNotion(req.body)
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -40,7 +40,7 @@ const api = axios.create({
 
 const addToNotion = async (data) => {
     const res = await api.post('/v1/pages', data);
-    console.log('res: ', res);
+    return res
 }
 
 
