@@ -6,6 +6,12 @@ const port = 3000;
 // 中间件示例：解析 JSON 请求体
 app.use(express.json());
 
+app.use(cors({
+  origin: '*', // 允许所有域名
+  methods: 'GET,POST,PUT,DELETE', // 允许的 HTTP 方法
+  allowedHeaders: 'Content-Type,Authorization' // 允许的请求头
+}));
+
 // 定义一个根路由
 app.get('/', (req, res) => {
   res.send('Hello World!');
